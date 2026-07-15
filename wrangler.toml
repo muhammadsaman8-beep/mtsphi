@@ -1,15 +1,14 @@
 name = "mts-alhidayatul"
-compatibility_date = "2025-01-01"
+compatibility_date = "2026-07-15"
 compatibility_flags = ["nodejs_compat"]
 
-# Output build TanStack Start (Nitro preset cloudflare-pages).
-# Jalankan `npm run build` lalu `npm run deploy` (wrangler membaca folder ini).
-pages_build_output_dir = "./.output/public"
+# Output dari @cloudflare/vite-plugin
+main = ".output/server/index.mjs"
+
+[assets]
+directory = ".output/public"
 
 # --- Cloudflare D1 ---
-# 1) Buat database:  npx wrangler d1 create mts-alhidayatul-db
-# 2) Salin "database_id" yang muncul ke bawah ini.
-# 3) Binding "DB" akan tersedia di server function (lihat src/db/client.ts).
 [[d1_databases]]
 binding = "DB"
 database_name = "mts-alhidayatul-db"
