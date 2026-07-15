@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* ===== Design tokens (Tailwind v4 @theme) ===== */
+@theme {
+  --color-brand: #0B5D3B;
+  --color-brand-600: #0E7A4C;
+  --color-brand-500: #159A63;
+  --color-gold: #C7A04A;
+  --color-goldsoft: #F3EAD3;
+  --color-cream: #FBFAF6;
+  --color-soft: #F4F2EB;
+  --color-ink: #1F2A24;
+  --color-muted: #5D6B63;
+  --color-line: #E7E4D9;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle Islamic geometric pattern helper */
+.pattern-islamic {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><path d='M30 0l30 30-30 30L0 30z' fill='none' stroke='%23ffffff' stroke-width='1'/></svg>");
+}
