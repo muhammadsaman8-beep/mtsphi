@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build && tsc --noEmit",
-    "start": "node .output/server/index.mjs",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
@@ -25,10 +25,11 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.0.0",
+    "@cloudflare/vite-plugin": "^1.45.0",
     "@cloudflare/workers-types": "^4.20250109.0",
     "@tailwindcss/vite": "^4.0.0",
     "@vitejs/plugin-react": "^4.7.0",
+    "@types/node": "^22.10.0",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "drizzle-kit": "^0.30.1",
