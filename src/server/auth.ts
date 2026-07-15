@@ -4,7 +4,13 @@ import { z } from 'zod'
 import { getDb } from '~/db/client'
 import { users } from '~/db/schema'
 import { verifyPassword } from '~/lib/password'
-import { useAppSession, type SessionUser } from '~/lib/session'
+// PENTING: hanya impor TIPE dari lib/session di level atas.
+// Modul session.ts memakai `useSession` (khusus server); mengimpornya secara
+// statis akan membuatnya bocor ke bundle client dan build ditolak
+// (tanstack-start-core:import-protection). Karena itu useAppSession diambil
+// lewat `await import(...)` DI DALAM handler server (kode ini tidak pernah ikut
+// ke client).
+import type { SessionUser } from '~/lib/session'
 import type { Role } from '~/lib/roles'
 
 const loginInput = z.object({
@@ -16,6 +22,7 @@ const loginInput = z.object({
 export const login = createServerFn({ method: 'POST' })
   .validator((i: unknown) => loginInput.parse(i))
   .handler(async ({ data }) => {
+    const { useAppSession } = await import('~/lib/session')
     const db = await getDb()
     if (!db) {
       throw new Error('Database belum terhubung. Jalankan migrasi & seed D1 dulu.')
@@ -39,6 +46,7 @@ export const login = createServerFn({ method: 'POST' })
 
 /** Logout: kosongkan sesi. */
 export const logout = createServerFn({ method: 'POST' }).handler(async () => {
+  const { useAppSession } = await import('~/lib/session')
   const session = await useAppSession()
   await session.clear()
   return { ok: true }
@@ -47,6 +55,7 @@ export const logout = createServerFn({ method: 'POST' }).handler(async () => {
 /** Ambil user yang sedang login (atau null). Dipakai di beforeLoad & UI. */
 export const getCurrentUser = createServerFn({ method: 'GET' }).handler(
   async (): Promise<SessionUser | null> => {
+    const { useAppSession } = await import('~/lib/session')
     const session = await useAppSession()
     return session.data.user ?? null
   },
@@ -54,9 +63,11 @@ export const getCurrentUser = createServerFn({ method: 'GET' }).handler(
 
 // ---- Util internal (dipanggil DI DALAM handler server function lain) ----
 // Penting: otorisasi WAJIB dicek di setiap handler yang menyentuh data privat,
-// bukan hanya di route guard (beforeLoad).
+// bukan hanya di route guard (beforeLoad). Keduanya memakai impor dinamis agar
+// tidak menarik modul sesi ke client.
 
 export async function requireUser(): Promise<SessionUser> {
+  const { useAppSession } = await import('~/lib/session')
   const session = await useAppSession()
   const user = session.data.user
   if (!user) throw new Error('Anda harus login terlebih dahulu.')
