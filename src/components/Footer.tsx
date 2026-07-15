@@ -32,6 +32,7 @@ export function Footer() {
               <li>Prestasi</li>
               <li>Ekstrakurikuler</li>
               <li>Download</li>
+              <li><Link to="/login" className="hover:text-gold">Login Staf/Guru</Link></li>
             </ul>
           </div>
           <div>
