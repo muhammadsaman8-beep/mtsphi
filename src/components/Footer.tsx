@@ -21,7 +21,7 @@ export function Footer() {
             <ul className="flex flex-col gap-2 text-sm">
               <li><Link to="/" className="hover:text-gold">Beranda</Link></li>
               <li><Link to="/profil" className="hover:text-gold">Profil</Link></li>
-              <li><Link to="/blog" search={{}} className="...">Blog</Link></li>
+              <li><Link to="/blog" search={{ page: 1 }} className="hover:text-gold">Blog Kegiatan</Link></li>
               <li><Link to="/kontak" className="hover:text-gold">Kontak</Link></li>
             </ul>
           </div>
