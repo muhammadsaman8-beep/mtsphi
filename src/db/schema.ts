@@ -11,6 +11,8 @@ export const posts = sqliteTable('posts', {
   cover: text('cover').notNull(),
   category: text('category').notNull(),
   author: text('author').notNull(),
+  // Relasi opsional ke users.id (penulis). Null untuk artikel seed lama.
+  authorId: integer('author_id'),
   date: text('date').notNull(), // ISO yyyy-mm-dd
   views: integer('views').notNull().default(0),
   // Disimpan sebagai JSON string; drizzle otomatis parse ke string[].
@@ -20,3 +22,16 @@ export const posts = sqliteTable('posts', {
 
 export type PostRow = typeof posts.$inferSelect
 export type NewPostRow = typeof posts.$inferInsert
+
+// Tabel pengguna untuk login berbasis peran (admin / guru / staf).
+export const users = sqliteTable('users', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+  passwordHash: text('password_hash').notNull(),
+  role: text('role').notNull().default('staf'), // 'admin' | 'guru' | 'staf'
+  createdAt: text('created_at').notNull().default(sql`(current_timestamp)`),
+})
+
+export type UserRow = typeof users.$inferSelect
+export type NewUserRow = typeof users.$inferInsert
