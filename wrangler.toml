@@ -13,5 +13,5 @@ pages_build_output_dir = "./.output/public"
 [[d1_databases]]
 binding = "DB"
 database_name = "mts-alhidayatul-db"
-database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
+database_id = "YOUR_DATABASE_ID"
 migrations_dir = "drizzle/migrations"
