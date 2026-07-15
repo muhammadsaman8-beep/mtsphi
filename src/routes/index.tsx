@@ -123,7 +123,7 @@ function Home() {
           ))}
         </div>
         <div className="mt-11 flex justify-center">
-          <Link to="/blog" className="rounded-full border border-line bg-white px-6 py-3 font-semibold text-brand">
+          <Link to="/blog" search={{}} className="...">
             Lihat Semua Kegiatan
           </Link>
         </div>
