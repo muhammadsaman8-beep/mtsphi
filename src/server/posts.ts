@@ -71,7 +71,7 @@ export const getPosts = createServerFn({ method: 'GET' })
   .validator((input: unknown) => listInput.parse(input))
   .handler(async ({ data }): Promise<PostListResult> => {
     const { kategori, q, page } = data
-    const db = getDb()
+    const db = await getDb()
     if (!db) return listFromMock(data)
 
     const where = and(
@@ -122,7 +122,7 @@ const slugInput = z.object({ slug: z.string() })
 export const getPost = createServerFn({ method: 'GET' })
   .validator((input: unknown) => slugInput.parse(input))
   .handler(async ({ data }) => {
-    const db = getDb()
+    const db = await getDb()
     if (!db) {
       const post = POSTS.find((p) => p.slug === data.slug)
       if (!post) return null
