@@ -54,7 +54,7 @@ function PostDetail() {
           >
             Bagikan ke WhatsApp
           </a>
-          <Link to="/blog" search={{}} className="...">Blog
+          <Link to="/blog" search={{ page: 1 }} className="rounded-full border border-line bg-white px-5 py-2.5 text-sm font-semibold text-brand">
             ← Kembali ke Blog
           </Link>
         </div>
