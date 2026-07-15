@@ -1,12 +1,7 @@
+"$schema" = "./node_modules/wrangler/config-schema.json"
 name = "mts-alhidayatul"
 compatibility_date = "2026-07-15"
 compatibility_flags = ["nodejs_compat"]
-
-# Output dari @cloudflare/vite-plugin
-main = ".output/server/index.mjs"
-
-[assets]
-directory = ".output/public"
 
 # --- Cloudflare D1 ---
 [[d1_databases]]
