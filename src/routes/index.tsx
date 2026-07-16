@@ -51,8 +51,8 @@ function Home() {
               akhlak mulia, dan pengembangan bakat siswa.
             </p>
             <div className="mt-8 flex flex-wrap gap-3.5">
-              <Link to="/login" className="rounded-full bg-gold px-5 py-3 font-semibold text-[#3a2f10] shadow-lg transition hover:brightness-105">
-                Login Panel →
+              <Link to="/ppdb" className="rounded-full bg-gold px-5 py-3 font-semibold text-[#3a2f10] shadow-lg transition hover:brightness-105">
+                Daftar Siswa Baru →
               </Link>
               <Link to="/profil" className="rounded-full border border-white/35 bg-white/10 px-5 py-3 font-semibold text-white transition hover:bg-white/20">
                 Jelajahi Profil
@@ -65,7 +65,7 @@ function Home() {
             <div className="absolute -right-4 -top-4 h-24 w-24 rounded-2xl bg-gold/30 blur-xl" />
             <img
               src="/img/hero-side.jpg"
-              alt="Kegiatan siswa Madrasah Tsanawiyah Al Hidayatul Islamiyah"
+              alt="Foto Madrasah Tsanawiyah Al Hidayatul Islamiyah"
               loading="lazy"
               onError={(e) => {
                 e.currentTarget.src =
@@ -99,7 +99,7 @@ function Home() {
       <section className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-20 md:grid-cols-2">
         <div
           className="aspect-[4/3] rounded-2xl bg-soft bg-cover bg-center shadow"
-          style={{ backgroundImage: "url('/img/tahfidz.jpg')" }}
+          style={{ backgroundImage: "url('/img/kamad.jpg')" }}
         />
         <div>
           <span className="text-sm font-bold uppercase tracking-widest text-brand-500">— Sambutan Kepala Madrasah</span>
@@ -112,7 +112,7 @@ function Home() {
           <blockquote className="my-5 border-l-[3px] border-gold pl-4 italic">
             “Didiklah anak-anakmu sesuai dengan zamannya.”
           </blockquote>
-          <p className="font-bold text-brand">— H. Ahmad Fauzi, S.Pd.I., M.Pd. · Kepala Madrasah</p>
+          <p className="font-bold text-brand">— Ust. Taufiq Rahman Al-Hafidz, S. Pd. · Kepala Madrasah</p>
         </div>
       </section>
 
@@ -162,7 +162,7 @@ function Home() {
             Penerimaan Peserta Didik Baru Tahun Ajaran 2026/2027 telah dibuka.
           </p>
           <div className="relative mt-6 flex flex-wrap justify-center gap-3.5">
-            <a href="#" className="rounded-full bg-gold px-6 py-3 font-semibold text-[#3a2f10]">Daftar Sekarang</a>
+            <a href="/ppdb" className="rounded-full bg-gold px-6 py-3 font-semibold text-[#3a2f10]">Daftar Sekarang</a>
             <Link to="/kontak" className="rounded-full border border-white/35 bg-white/10 px-6 py-3 font-semibold text-white">Hubungi via WhatsApp</Link>
           </div>
         </div>
