@@ -17,7 +17,7 @@ export function Navbar() {
           </span>
           <span className="leading-tight">
             <b className="block text-sm">MTs Al Hidayatul Islamiyah</b>
-            <span className="text-xs text-muted">Terakreditasi A · NPSN 12345678</span>
+            <span className="text-xs text-muted">Terakreditasi C · NPSN 10508155 NSM 121215060001</span>
           </span>
         </Link>
 
@@ -38,10 +38,10 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#ppdb"
+            href="/login"
             className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600"
           >
-            Daftar PPDB
+            Login Panel
           </a>
         </div>
       </nav>
