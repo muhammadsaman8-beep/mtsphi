@@ -8,15 +8,15 @@ export const Route = createFileRoute('/')({
 })
 
 const STATS = [
-  { n: '480+', l: 'Siswa Aktif' },
-  { n: '32', l: 'Guru & Tenaga Ahli' },
-  { n: '18', l: 'Ekstrakurikuler' },
-  { n: '75+', l: 'Prestasi Diraih' },
+  { n: '250+', l: 'Siswa Aktif', i: '🎓' },
+  { n: '22', l: 'Guru & Tenaga Kependidikan', i: '🧑\u200d🏫' },
+  { n: '3', l: 'Ekstrakurikuler', i: '⚽' },
+  { n: '50+', l: 'Prestasi Diraih', i: '🏆' },
 ]
 
 const PROGRAMS = [
   { i: '⚇', t: "Tahfizh Al-Qur'an", d: 'Program menghafal dengan bimbingan ustadz berpengalaman.' },
-  { i: '⚙', t: 'Sains & Teknologi', d: 'Laboratorium modern & pembelajaran berbasis proyek.' },
+  { i: '⚙', t: 'Kitab Kuning', d: 'Kajian Kitab Kuning dengan ustadz berpengalaman' },
   { i: '⚑', t: 'Bahasa Arab & Inggris', d: 'Penguatan dua bahasa untuk komunikasi global.' },
   { i: '♫', t: 'Seni & Kaligrafi', d: 'Wadah kreativitas melalui seni Islami & budaya.' },
   { i: '⚽', t: 'Olahraga & Pramuka', d: 'Membangun kedisiplinan & jiwa kepemimpinan.' },
@@ -30,42 +30,66 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative flex min-h-[560px] items-center overflow-hidden text-white">
+      <section className="relative overflow-hidden text-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/img/hero.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#062a1b]/95 via-[#08301f]/70 to-[#08301f]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#062a1b]/95 via-[#08301f]/80 to-[#08301f]/55" />
         <div className="pattern-islamic absolute inset-0 opacity-[0.14]" />
-        <div className="relative mx-auto w-full max-w-6xl px-6 py-24">
-          <span className="text-sm font-bold uppercase tracking-widest text-white">
-            — Membina Generasi Qur'ani & Berprestasi
-          </span>
-          <h1 className="mt-4 max-w-[16ch] text-4xl font-extrabold leading-tight md:text-5xl">
-            Madrasah Tsanawiyah Al Hidayatul Islamiyah
-          </h1>
-          <p className="mt-4 max-w-[52ch] text-lg text-white/90">
-            Pendidikan berbasis nilai Islam yang memadukan keunggulan akademik,
-            akhlak mulia, dan pengembangan bakat siswa.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3.5">
-            <a href="#ppdb" className="rounded-full bg-gold px-5 py-3 font-semibold text-[#3a2f10]">
-              Daftar PPDB 2026/2027 →
-            </a>
-            <Link to="/profil" className="rounded-full border border-white/35 bg-white/10 px-5 py-3 font-semibold text-white">
-              Jelajahi Profil
-            </Link>
+        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 py-24 md:grid-cols-2">
+          {/* Kiri: teks */}
+          <div>
+            <span className="text-sm font-bold uppercase tracking-widest text-white">
+              — Membina Generasi Qur'ani & Berprestasi
+            </span>
+            <h1 className="mt-4 max-w-[16ch] text-4xl font-extrabold leading-tight md:text-5xl">
+              Madrasah Tsanawiyah Al Hidayatul Islamiyah
+            </h1>
+            <p className="mt-4 max-w-[52ch] text-lg text-white/90">
+              Pendidikan berbasis nilai Islam yang memadukan keunggulan akademik,
+              akhlak mulia, dan pengembangan bakat siswa.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3.5">
+              <Link to="/login" className="rounded-full bg-gold px-5 py-3 font-semibold text-[#3a2f10] shadow-lg transition hover:brightness-105">
+                Login Panel →
+              </Link>
+              <Link to="/profil" className="rounded-full border border-white/35 bg-white/10 px-5 py-3 font-semibold text-white transition hover:bg-white/20">
+                Jelajahi Profil
+              </Link>
+            </div>
+          </div>
+
+          {/* Kanan: foto */}
+          <div className="relative hidden md:block">
+            <div className="absolute -right-4 -top-4 h-24 w-24 rounded-2xl bg-gold/30 blur-xl" />
+            <img
+              src="/img/hero-side.jpg"
+              alt="Kegiatan siswa Madrasah Tsanawiyah Al Hidayatul Islamiyah"
+              loading="lazy"
+              onError={(e) => {
+                e.currentTarget.src =
+                  'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80'
+              }}
+              className="relative aspect-[4/3] w-full rounded-3xl object-cover shadow-2xl ring-1 ring-white/25"
+            />
           </div>
         </div>
       </section>
 
       {/* STATS */}
-      <section className="mx-auto -mt-11 max-w-6xl px-6">
-        <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-line bg-white shadow md:grid-cols-4">
-          {STATS.map((s, i) => (
-            <div key={i} className="border-line p-7 text-center md:[&:not(:last-child)]:border-r">
-              <b className="block text-3xl font-extrabold text-brand">{s.n}</b>
-              <span className="text-sm text-muted">{s.l}</span>
+      <section className="mx-auto -mt-14 max-w-6xl px-6">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {STATS.map((s) => (
+            <div
+              key={s.l}
+              className="rounded-2xl border border-line bg-white p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+            >
+              <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-xl bg-goldsoft text-xl">
+                {s.i}
+              </div>
+              <b className="block text-3xl font-extrabold leading-none text-brand">{s.n}</b>
+              <span className="mt-2 block text-sm font-medium text-muted">{s.l}</span>
             </div>
           ))}
         </div>
