@@ -12,9 +12,11 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-line bg-cream/90 backdrop-blur">
       <nav className="mx-auto flex h-[74px] max-w-6xl items-center justify-between px-6">
         <Link to="/" className="flex items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand to-brand-500 text-xl text-white shadow">
-            ✥
-          </span>
+          <img
+            src="/img/logo.webp"
+            alt="Logo MTs Al Hidayatul Islamiyah"
+            className="h-11 w-11 rounded-xl object-contain shadow"
+          />
           <span className="leading-tight">
             <b className="block text-sm">MTs Al Hidayatul Islamiyah</b>
             <span className="text-xs text-muted">Terakreditasi C · NPSN 10508155 NSM 121215060001</span>
